@@ -1,0 +1,44 @@
+/* Keyframes for sliding down the navbar */
+@keyframes slideInFromTop {
+    0% {
+      transform: translateY(-100%);  /* Start above the screen */
+    }
+    100% {
+      transform: translateY(0);      /* End at its original position */
+    }
+  }
+  
+  /* Navbar styles */
+  nav {
+    position: fixed;          /* Keep navbar fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%;             /* Full width */
+    z-index: 1000;           /* Make sure it's above other elements */
+    animation: slideInFromTop 0.5s ease-out forwards; /* Apply slide-in animation */
+  }
+  
+  /* Additional styles if needed */
+  .fade-in {
+    animation: fade-in 0.5s forwards; /* If you want to keep fading as an additional effect */
+  }
+  
+  /* Example of fade-in effect if you still want it for content */
+  @keyframes fade-in {
+    from {
+      opacity: 0; /* Start transparent */
+    }
+    to {
+      opacity: 1; /* End fully visible */
+    }
+  }
+  
+  /* Hover effects */
+  nav a {
+    transition: color 0.1s ease, background-color 0.1s ease; /* Smooth transition for hover effects */
+  }
+  
+  nav a:hover {
+    text-decoration: none; /* Optional: underline text on hover */
+  }
+  

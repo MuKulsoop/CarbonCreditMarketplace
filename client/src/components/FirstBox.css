@@ -1,0 +1,66 @@
+.bg-image {
+  position: relative;        /* Set relative positioning for the container */
+  height: 100vh;              /* Set height of the div (85% of viewport height) */
+  width: 100vw;              /* Full viewport width */
+  overflow: hidden;          /* Ensures content stays within bounds */
+}
+
+.bg-image::before {
+  content: '';  /* Creates the pseudo-element for the background image */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  /* Background Image and Gradient */
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 70%), url('https://s3-alpha-sig.figma.com/img/7b70/8dc2/11e2af1eb6a5ca79b4154a62740357c1?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=gcrGaCdxi6AqCGaP3tzWQ1wGDUB7dr7C71FhQ7N9dEJFs-hDF8QP1B5vNgNSbX~Af7fidLyf1v9972oHo4-D0t-FjtIIFYVpaLX29fHYOKN4jlah8C8qGUMATK7xmclQgElIiIpWYLST7GiHU4FfGCxMyOjzV-UzofUdyzqrJP-2R9bSfP-ZiEn5oA56BHqvkEmAoYr6ApSI31qSY83hPYOi6vek6I1JJrdo-357LyRhH9qKSbZipTQY7qi~zKNu9MVbDJzR7YKoZn2uQU4loPJutJD3cfA9nkG9TqoB6FSpT1BO1q6FwlvOSwsObpEfZp4rYDOb1NuRsoJQVn8R5w__');
+  background-size: cover;       /* Ensures the image covers the entire container */
+  background-position: center;  /* Center the image */
+  
+  /* Flip the background horizontally */
+  transform: scaleX(-1);
+  z-index: 0;  /* Keeps this background below the content */
+}
+
+.bg-image > div {
+  position: relative;
+  z-index: 1;  /* Ensures content appears above the background image */
+}
+
+/* Button Styles */
+button {
+  background-color: #3CAB90;        /* Default background color */
+  border: none;                     /* Remove borders */
+  padding: 12px 24px;               /* Padding for the buttons */
+  color: white;                     /* Text color */
+  font-size: 16px;                  /* Font size */
+  border-radius: 30px;              /* Rounded corners */
+  cursor: pointer;                  /* Pointer cursor on hover */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;  /* Smooth transition for transform and shadow */
+}
+
+/* Button hover effect: "Pop-Up" */
+button:hover {
+  transform: translateY(20px);      /* Moves the button slightly upwards */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);  /* Adds a shadow for the "pop-up" effect */
+}
+
+/* Keyframes for Fade-in Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);  /* Start slightly lower */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);     /* End at the original position */
+  }
+}
+
+/* Applying animation to content */
+.fade-in {
+  opacity: 0;  /* Start with invisible content */
+  animation: fadeIn 1s forwards;  /* 1-second fade-in animation */
+  animation-delay: 0.3s;          /* Optional: delay before starting the animation */
+}
